@@ -1,0 +1,62 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if my_books != []%}
+<h1 class="text-success">Мои книги</h1>
+{% for item in my_books%}
+<div class="col-md6 border rounded">
+    <h2>{{item.title}}</h2>
+    <div>
+        Автор - {{item.author}}</div>
+    <div>
+        Жанр - {{item.genre}}
+    </div>
+</div>
+{% endfor %}
+{%endif%}
+
+<h1 class="text-primary">Книги в нашей библиотеке</h1>
+{% for item in books%}
+<div class="col-md6 border rounded">
+    {%if item.user_id != 1 and current_user.is_authenticated%}
+    <div class="p-3 mb-2 bg-light text-dark">
+    <h2>{{item.title}}</h2>
+    <div>
+        Автор - {{item.author}}</div>
+    <div>
+        Жанр - {{item.genre}}
+    </div>
+    {% if current_user.is_authenticated and current_user.id == 1 %}
+    <div>
+        Книга находится у ID  {{item.user_id}}
+    </div>
+    {% endif %}
+    </div>
+    {% if current_user.is_authenticated and current_user.id == 1 %}
+    <div>
+        <a href="/books/{{ item.id }}" class="btn btn-warning">Изменить</a>
+        <a href="/books_delete/{{ item.id }}" class="btn btn-danger">Удалить</a>
+    </div>
+    {% endif %}
+    {%else%}
+    <h2>{{item.title}}</h2>
+    <div>
+        Автор - {{item.author}}</div>
+    <div>
+        Жанр - {{item.genre}}
+    </div>
+    </div>
+    {% if current_user.is_authenticated and current_user.id == 1 %}
+    <div>
+        <a href="/books/{{ item.id }}" class="btn btn-warning">Изменить</a>
+        <a href="/books_delete/{{ item.id }}" class="btn btn-danger">Удалить</a>
+    </div>
+    {% endif %}
+    {% endif %}
+</div>
+{% endfor %}
+    {% if current_user.is_authenticated and current_user.id == 1 %}
+        <a href="books" class="btn btn-secondary">Добавить книгу</a>
+    {% endif %}
+{% endblock %}
