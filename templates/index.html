@@ -3,7 +3,9 @@
 {% block content %}
 
 {% if my_books != []%}
+<br>
 <h1 class="text-success">Мои книги</h1>
+<br>
 {% for item in my_books%}
 <div class="col-md6 border rounded">
     <h2>{{item.title}}</h2>
@@ -16,7 +18,9 @@
 {% endfor %}
 {%endif%}
 
+<br>
 <h1 class="text-primary">Книги в нашей библиотеке</h1>
+<br>
 {% for item in books%}
 <div class="col-md6 border rounded">
     {%if item.user_id != 1 and current_user.is_authenticated%}
