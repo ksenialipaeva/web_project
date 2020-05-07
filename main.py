@@ -31,8 +31,28 @@ def index():
             books = session.query(Books).filter(Books.user_id != current_user.id)
     else:
         my_books = []
-    return render_template("index.html", books=books, my_books = my_books)
+    return render_template("index.html", books=books, my_books=my_books)
 
+
+@app.route('/info')
+def info():
+    return render_template('info.html')
+
+
+@app.route('/main_info')
+def main_info():
+    return render_template('main_info.html')
+
+
+@app.route('/user_info')
+def user_info():
+    return render_template('user_info.html')
+
+@app.route("/user_list")
+def user_list():
+    session = db_session.create_session()
+    users = session.query(User).all()
+    return render_template("user_list.html", users=users)
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():

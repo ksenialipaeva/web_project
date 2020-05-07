@@ -11,17 +11,26 @@
 </head>
 <body>
 <header>
-    <nav class="navbar navbar-light bg-light">
-        <a class="navbar-brand" href="#">Библиоквант</a>
-        {% if current_user.is_authenticated %}
-    <a class="navbar-brand" href="/logout">{{ current_user.name }} ID {{current_user.id}}</a>
+
+<nav class="navbar navbar-light bg-light">
+<a class="nav-link active" href="/">Библиоквант</a>
+{% if current_user.is_authenticated %}
+    {% if current_user.id == 1%}
+        <a class="navbar-brand" href="/main_info">Руководство для библиотекаря</a>
+        <a class="navbar-brand" href="/user_list">Список читателей</a>
+    {% else %}
+        <a class="navbar-brand" href="/user_info">Руководство для пользователя</a>
+    {% endif %}
+<a class="navbar-brand" href="/logout">{{ current_user.name }} ID {{current_user.id}}</a>
 {% else %}
-    <p>
-        <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
-        <a class="btn btn-success" href="/login">Войти</a>
-    </p>
+    <a class="navbar-brand" href="/info">О программе</a>
+<p>
+    <a class="btn btn-primary " href="/register">Зарегистрироваться</a>
+    <a class="btn btn-success" href="/login">Войти</a>
+</p>
 {% endif %}
-    </nav>
+</nav>
+
 </header>
 <!-- Begin page content -->
 <main role="main" class="container">
