@@ -1,0 +1,6 @@
+flask
+flask_wtf
+flask_wtf.html5
+wtforms
+wtforms.validators
+flask_login

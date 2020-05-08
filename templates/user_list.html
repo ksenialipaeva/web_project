@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block content %}
+<br>
+<h1>Наши читатели</h1>
+<br>
+{% for item in users%}
+<div class="col-md6 border rounded">
+    <p class="font-weight-bold">ID {{item.id}} - {{item.name}} {{item.surname}}</p>
+</div>
+{% endfor %}
+{% endblock %}
