@@ -7,6 +7,7 @@ from wtforms import StringField, PasswordField, IntegerField, SubmitField, Boole
 from wtforms.validators import DataRequired
 from data.users import User
 from flask_login import LoginManager, login_user, login_required, current_user, logout_user
+import os
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = 'yandexlyceum_secret_key'
@@ -16,7 +17,8 @@ login_manager.init_app(app)
 
 def main():
     db_session.global_init("db/library.sqlite")
-    app.run()
+    port = int(os.environ.get("PORT", 5000))
+    app.run(host='0.0.0.0', port=port)
 
 
 @app.route("/")
