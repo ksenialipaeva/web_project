@@ -1,6 +1,4 @@
 flask
-flask_wtf
-flask_wtf.html5
+flask-wtf
 wtforms
-wtforms.validators
-flask_login
+flask-login
