@@ -159,7 +159,7 @@ def edit_books(id):
 @login_required
 def books_delete(id):
     session = db_session.create_session()
-    books = session.query(Books).filter(Books.id == id, Books.user == current_user).first()
+    books = session.query(Books).filter(Books.id == id).first()
     if books:
         session.delete(books)
         session.commit()

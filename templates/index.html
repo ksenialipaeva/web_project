@@ -21,6 +21,9 @@
 <br>
 <h1 class="text-primary">Книги в нашей библиотеке</h1>
 <br>
+    {% if current_user.is_authenticated and current_user.id == 1 %}
+        <a href="books" class="btn btn-success">Добавить книгу</a>
+    {% endif %}
 {% for item in books%}
 <div class="col-md6 border rounded">
     {%if item.user_id != 1 and current_user.is_authenticated%}
@@ -60,7 +63,4 @@
     {% endif %}
 </div>
 {% endfor %}
-    {% if current_user.is_authenticated and current_user.id == 1 %}
-        <a href="books" class="btn btn-secondary">Добавить книгу</a>
-    {% endif %}
 {% endblock %}
