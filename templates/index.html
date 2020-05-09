@@ -24,6 +24,7 @@
     {% if current_user.is_authenticated and current_user.id == 1 %}
         <a href="books" class="btn btn-success">Добавить книгу</a>
     {% endif %}
+<br>
 {% for item in books%}
 <div class="col-md6 border rounded">
     {%if item.user_id != 1 and current_user.is_authenticated%}

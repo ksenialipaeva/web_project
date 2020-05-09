@@ -119,7 +119,7 @@ def add_books():
         books.title = form.title.data
         books.author = form.author.data
         books.genre = form.genre.data
-        current_user.books.append(books)
+        books.user_id = form.user_id.data
         session.merge(current_user)
         session.commit()
         return redirect('/')
